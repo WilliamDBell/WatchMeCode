@@ -25,7 +25,7 @@ from glob import LEFT
 from glob import DOWN
 
 # This can be any value 0-7.  Chane it to test each function.
-CURRENT_GAME = 0
+CURRENT_GAME = 7
 
 # Set this to False to just test all your results without a GUI.  When set to True
 # it will test one puzzle at a time.
@@ -38,26 +38,181 @@ STEP_TIME = 500
 
 
 def solve0():
-  pass # pass does nothing. delete it and add your own code.
+    TurnOn()
+    TurnRight()
+    Move()
+    Move()
+    TurnRight()
+    Move()
+    TurnOff()
+
 
 def solve1():
-  pass
+    TurnOn()
+    TurnRight()
+    Move()
+    PickUp()
+    Move()
+    PutDown()
+    TurnRight()
+    Move()
+    TurnOff()
 
 def solve2():
-  pass
+    TurnOn()
+    MultiMove(2)
+    TurnLeft()
+    MultiMove(3)
+    TurnRight()
+    MultiMove(2)
+    TurnRight()
+    MultiMove(3)
+    TurnOff()
 
 def solve3():
-  pass
+    TurnOn()
+    MultiMove(3)
+    PickUp()
+    TurnRight()
+    for i in range(4):
+        Move()
+        PickUp()
+    TurnRight()
+    MultiMove(2)
+    TurnRight()
+    MultiMove(4)
+    MultiPutDown(5)
+    TurnAround()
+    MultiMove(2)
+    TurnOff()
 
 def solve4():
-  pass
+    TurnOn()
+    TurnRight()
+    MultiMove(4)
+    TurnRight()
+    MultiMove(2)
+    PickUp()
+    Move()
+    PickUp()
+    MultiMove(2)
+    PutDown()
+    PutDown()
+    TurnRight()
+    MultiMove(3)
+    TurnOff()
 
 def solve5():
-  pass
+    TurnOn()
+    TurnAround()
+    MoveDownRightDiagonal()
+    PickUp()
+    MoveDownRightDiagonal()
+    PutDown()
+    MoveDownRightDiagonal()
+    PickUp()
+    MoveDownRightDiagonal()
+    PickUp()
+    MoveDownRightDiagonal()
+    PutDown()
+    PutDown()
+    MoveDownRightDiagonal()
+    TurnOff()
 
 def solve6():
-  pass
+    TurnOn()
+    MovePickUpSeq(3)
+    TurnRight()
+    MovePickUpSeq(2)
+    MultiMove(2)
+    MultiPutDown(5)
+    TurnRight()
+    MultiMove(2)
+    PickUp()
+    Move()
+    PickUp()
+    MultiMove(2)
+    MultiPutDown(2)
+    TurnRight()
+    MultiMove(4)
+    TurnRight()
+    Move()
+    PickUp()
+    MultiMove(2)
+    PutDown()
+    TurnRight()
+    MultiMove(2)
+    TurnRight()
+    Move()
+    TurnOff()
+
+
 
 def solve7():
-  pass
+    TurnOn()
+    TurnRight()
+    Move()
+    PickUp()
+    Move()
+    PickUp()
+    MultiMove(2)
+    PickUp()
+    Move()
+    PickUp()
+    TurnLeft()
+    MultiMove(3)
+    PickUp()
+    TurnLeft()
+    Move()
+    PutDown()
+    Move()
+    PutDown()
+    Move()
+    PickUp()
+    Move()
+    PutDown()
+    MultiMove(2)
+    PutDown()
+    TurnAround()
+    MultiMove(4)
+    TurnRight()
+    MultiMove(5)
+    TurnRight()
+    Move()
+    MultiPutDown(2)
+    MultiMove(2)
+    TurnOff()
 
+# Turn to the right by making three left turns
+def TurnRight():
+    TurnLeft()
+    TurnLeft()
+    TurnLeft()
+
+# Turn around by making two left turns
+def TurnAround():
+    TurnLeft()
+    TurnLeft()
+
+# Move forward n spaces
+def MultiMove(n):
+    for i in range(n):
+        Move()
+
+# Putdown n tokens
+def MultiPutDown(n):
+    for i in range(n):
+        PutDown()
+
+# Move to the downward right diagonal space
+def MoveDownRightDiagonal():
+    TurnLeft()
+    Move()
+    TurnRight()
+    Move()
+
+# Perform n move pickup sequences
+def MovePickUpSeq(n):
+    for i in range(n):
+        MultiMove(2)
+        PickUp()
